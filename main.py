@@ -3,7 +3,7 @@ from discord.ext import commands
 import json
 import os
 
-developers = 'eal#2402'
+developers = 'eal#2402, ronin#3880'
 
 
 async def command_prefix(client, message):
@@ -101,4 +101,4 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run('ODg2MDM1Mjc1NzU3Nzg5MjM1.YTvupw.urDdgbcjQnup82iND-0Cv2ir-No')
+client.run('ODg2MDM1Mjc1NzU3Nzg5MjM1.YTvupw.rYiJWeAO6nkAvtNqn67qiMGo68Y')
