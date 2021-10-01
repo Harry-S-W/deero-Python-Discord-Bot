@@ -1,3 +1,67 @@
 {
-    "placeholder": 0
+    "placeholder": 0,
+    "b'?\\x0c\\xber\\\\\\xaf\\xe8\\xc8\\xa1\\x1d'": {
+        "message": "werfg",
+        "time sent": "2021-10-01 00:12:51.228000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    },
+    "b'\\xa9\\xce\\xb0\\x08\\xee\\xe1\\xa8\\x8a_\\xc6'": {
+        "message": "fe",
+        "time sent": "2021-10-01 00:13:18.464000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    },
+    "b'\\x80`~y\\x8a\\xf6R\\xdaE\\xaa'": {
+        "message": "gwsg",
+        "time sent": "2021-10-01 00:13:19.061000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    },
+    "b'\\xec\\xf5\\xa0\\xab3c\\xe0\\x18J\\xe1'": {
+        "message": "etjdgh",
+        "time sent": "2021-10-01 00:13:19.882000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    },
+    "b'<S\\x7frI\\xd2\\xc7}\\x82\\x15'": {
+        "message": "ethjdfnbeh",
+        "time sent": "2021-10-01 00:13:20.692000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    },
+    "b\"\\xa4\\x14\\xdc\\x11rii\\x1bd'\"": {
+        "message": "rjgfgj",
+        "time sent": "2021-10-01 00:13:21.419000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    },
+    "b'\\xeb6O\\xd92\\xfbu\\x06P\\xfa'": {
+        "message": "ehjdgnretj",
+        "time sent": "2021-10-01 00:13:22.304000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    },
+    "b'\\xdfk\\xe1\\x02\\x14\\xee\"@\\xb8\\x12'": {
+        "message": "rggggggggggggggggggggggggggggggggggggggggg",
+        "time sent": "2021-10-01 00:14:19.633000",
+        "author": "eal#2402",
+        "member ID": "527244994864742420",
+        "channel ID": "784873642575921152",
+        "channel name": "card-game-test"
+    }
 }

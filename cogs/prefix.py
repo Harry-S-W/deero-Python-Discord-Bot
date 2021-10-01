@@ -4,6 +4,7 @@ import json
 import os
 from main import client
 from main import developers
+from cryptography.fernet import Fernet
 
 
 class Prefix(commands.Cog):
@@ -47,7 +48,7 @@ class Prefix(commands.Cog):
                     if len(list(prefixes[str(ctx.guild.id)])) >= 3:
                         embed_B = discord.Embed(
                             colour=discord.Colour.from_rgb(255, 0, 0),
-                            title='Error',
+                            title='Error!',
                             description='You already have 3 prefixes saved. (Not including @ mention) 4+ prefixes are only'
                                         ' available to premium users of Deero.'
                         )
@@ -98,30 +99,50 @@ class Prefix(commands.Cog):
                 await ctx.send(embed=embed_E)
                 message = await client.wait_for('message', check=check)
 
-                if message.content in prefixes[str(ctx.guild.id)]:
-                    prefixes[str(ctx.guild.id)].remove(message.content)
+                if str(ctx.guild.id) in prefixes:
+                    if message.content in prefixes[str(ctx.guild.id)]:
+                        prefixes[str(ctx.guild.id)].remove(message.content)
 
-                    with open('data/bot-data/prefixes.json', 'w')as f:
-                        json.dump(prefixes, f, indent=4)
+                        with open('data/bot-data/prefixes.json', 'w')as f:
+                            json.dump(prefixes, f, indent=4)
 
-                    embed_F = discord.Embed(
-                        colour=discord.Colour.from_rgb(26, 255, 0),
-                        title="Great!",
-                        description=f'I have successfully removed {message.content} from your registered prefixes!'
-                    )
+                        embed_F = discord.Embed(
+                            colour=discord.Colour.from_rgb(26, 255, 0),
+                            title="Great!",
+                            description=f'I have successfully removed {message.content} from your registered prefixes!'
+                        )
 
-                    if not prefixes[str(ctx.guild.id)]:
-                        if [''] not in prefixes[str(ctx.guild.id)]:
-                            del prefixes[str(ctx.guild.id)]
+                        if not prefixes[str(ctx.guild.id)]:
+                            if [''] not in prefixes[str(ctx.guild.id)]:
+                                del prefixes[str(ctx.guild.id)]
 
-                            with open('data/bot-data/prefixes.json', 'w')as f:
-                                json.dump(prefixes, f, indent=4)
-                        embed_F.add_field(name='Prefixes:', value='`D., d.`')
+                                with open('data/bot-data/prefixes.json', 'w')as f:
+                                    json.dump(prefixes, f, indent=4)
+                            embed_F.add_field(name='Prefixes:', value='`D., d.`')
+
+                        else:
+                            embed_F.add_field(name='Prefixes:', value='`' + ', '.join(prefixes[str(ctx.guild.id)]) + '`')
+
+                        await ctx.send(embed=embed_F)
 
                     else:
-                        embed_F.add_field(name='Prefixes:', value='`' + ', '.join(prefixes[str(ctx.guild.id)]) + '`')
+                        embed_G = discord.Embed(
+                            colour=discord.Colour.from_rgb(255, 0, 0),
+                            title='Error!',
+                            description=f"It seems that `{message.content}` isn't a registered prefix in your server/guild.\n\n"
+                                        f"**Prefixes:** " + ', '.join(prefixes[str(ctx.guild.id)])
+                        )
+                        await ctx.send(embed=embed_G)
 
-                    await ctx.send(embed=embed_F)
+                if str(ctx.guild.id) not in prefixes:
+                    embed_H = discord.Embed(
+                        colour=discord.Colour.from_rgb(255, 0, 0),
+                        title='Error!',
+                        description='It seems like your server/guild does not have any registered prefixes.\n\n'
+                                    '**FYI: You can not remove default prefixes `D. and d.`**'
+                    )
+                    embed_H.set_footer(text='If this information is wrong, please report this error with the error command!')
+                    await ctx.send(embed=embed_H)
 
             # if choice.lower() != 'add' or 'remove':
             #     embed_G = discord.Embed(

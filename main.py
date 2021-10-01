@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import json
 import os
+from cryptography.fernet import Fernet
 
 developers = 'eal#2402, ronin#3880'
 
@@ -77,9 +78,7 @@ async def on_guild_join(guild):
         # messages per person.
         # This adds up the messages sent from each person
 
-        placeholder = {
-            "placeholder": 0
-        }
+        placeholder = {}
 
         with open(f'data/dataer-per-server/{guild.id}/members/permissions_per_member.json', 'w')as f:
             json.dump(placeholder, f, indent=4)
@@ -101,4 +100,4 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run('ODg2MDM1Mjc1NzU3Nzg5MjM1.YTvupw.rYiJWeAO6nkAvtNqn67qiMGo68Y')
+client.run('ODg2MDM1Mjc1NzU3Nzg5MjM1.YTvupw.V7DLFLiuu5465LUKl_F5tyX2toA')
