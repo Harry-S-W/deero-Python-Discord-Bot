@@ -4,7 +4,6 @@ import json
 import os
 from main import client
 from main import developers
-import os
 
 
 class MessageTracking(commands.Cog):

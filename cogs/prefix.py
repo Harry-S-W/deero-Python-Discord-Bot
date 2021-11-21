@@ -99,6 +99,16 @@ class Prefix(commands.Cog):
                 await ctx.send(embed=embed_E)
                 message = await client.wait_for('message', check=check)
 
+                if str(ctx.guild.id) not in prefixes:
+                    embed_H = discord.Embed(
+                        colour=discord.Colour.from_rgb(255, 0, 0),
+                        title='Error!',
+                        description='It seems like your server/guild does not have any registered prefixes.\n\n'
+                                    '**FYI: You can not remove default prefixes `D. and d.`**'
+                    )
+                    embed_H.set_footer(text='If this information is wrong, please report this error with the error command!')
+                    await ctx.send(embed=embed_H)
+
                 if str(ctx.guild.id) in prefixes:
                     if message.content in prefixes[str(ctx.guild.id)]:
                         prefixes[str(ctx.guild.id)].remove(message.content)
@@ -133,16 +143,6 @@ class Prefix(commands.Cog):
                                         f"**Prefixes:** " + ', '.join(prefixes[str(ctx.guild.id)])
                         )
                         await ctx.send(embed=embed_G)
-
-                if str(ctx.guild.id) not in prefixes:
-                    embed_H = discord.Embed(
-                        colour=discord.Colour.from_rgb(255, 0, 0),
-                        title='Error!',
-                        description='It seems like your server/guild does not have any registered prefixes.\n\n'
-                                    '**FYI: You can not remove default prefixes `D. and d.`**'
-                    )
-                    embed_H.set_footer(text='If this information is wrong, please report this error with the error command!')
-                    await ctx.send(embed=embed_H)
 
             # if choice.lower() != 'add' or 'remove':
             #     embed_G = discord.Embed(

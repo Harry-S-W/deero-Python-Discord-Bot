@@ -80,6 +80,9 @@ async def on_guild_join(guild):
 
         placeholder = {}
 
+        # Message per author
+        # Tracks all messages said by a person
+
         with open(f'data/dataer-per-server/{guild.id}/members/permissions_per_member.json', 'w')as f:
             json.dump(placeholder, f, indent=4)
 
@@ -94,6 +97,47 @@ async def on_guild_join(guild):
 
         with open(f'data/dataer-per-server/{guild.id}/server/messages_sent.json', 'w')as f:
             json.dump(messages_sent, f, indent=4)
+
+
+@client.command()
+async def test_newsletter_announcement(ctx):
+    with open('data/grouped-user-data/newsletter.json', 'r')as f:
+        newsletter_data = json.load(f)
+
+    newsletter_list = list(newsletter_data.keys())
+
+    Newsletter_Message = discord.Embed(
+        title="Introducing A New Update!",
+        description="***This update includes the following:***\n\n"
+                    "   🔵 New clear command limiter\n\n"
+                    "   🔵 More advanced server storage\n\n"
+                    "   🔵 Kick command now kicks multiple people\n\n"
+                    "   🔵 Unban command now working"
+    )
+    Newsletter_Message.set_footer(text="This is simply a test")
+
+    def check(message):
+        return message.author == ctx.author
+
+    await ctx.send("Are you sure you want to send this message? type `YES` in all caps")
+    await ctx.send(embed=Newsletter_Message)
+
+    message = await client.wait_for('message', check=check)
+    if message.content == "YES":
+
+        for user_id in newsletter_list:
+            user = await client.fetch_user(user_id)
+            await user.send(embed=Newsletter_Message)
+
+            Embed_A = discord.Embed(
+                title="Great!",
+                description=f"**I sent a message to this user:**\n*{user}*"
+            )
+            await ctx.send(embed=Embed_A)
+
+    else:
+        await ctx.send("||**REQUEST CANCELLED** -- Error In Confirmation||\n\n"
+                       "**||TRY - AGAIN||**")
 
 
 for filename in os.listdir('./cogs'):
